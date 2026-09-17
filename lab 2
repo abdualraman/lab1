@@ -1,0 +1,40 @@
+# Lab 2
+
+import json
+
+# Task 1
+raw_json = """
+{
+  "id": 101,
+  "name": "Alex Mercer",
+  "email": "alex.old@example.com",
+  "is_active": true,
+  "skills": ["Python", "SQL"]
+}
+"""
+
+user = json.loads(raw_json)
+user["email"] = "alex.mercer@example.com"
+user["skills"].append("Docker")
+
+print(json.dumps(user, indent=4))
+
+# Task 2
+products = [
+    {"name": "Wireless Mouse", "price": 25.5, "quantity": 10},
+    {"name": "Mechanical Keyboard", "price": 85, "quantity": 5},
+    {"name": "HD Monitor", "price": 150, "quantity": 2}
+]
+
+with open("products.json", "w") as f:
+    json.dump(products, f, indent=4)
+
+total = 0
+
+with open("products.json", "r") as f:
+    products = json.load(f)
+
+for item in products:
+    total += item["price"] * item["quantity"]
+
+print("Total Stock Value:", total)
