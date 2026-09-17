@@ -1,0 +1,28 @@
+# Lab 1
+
+# Exercise 1
+with open("exercise1_input.txt", "w") as f:
+    f.write("Hello world!\nWelcome to Python File I/O lab.\nHappy coding!")
+
+lines = 0
+words = 0
+
+with open("exercise1_input.txt", "r") as f:
+    for line in f:
+        lines += 1
+        words += len(line.split())
+
+print("Total Lines:", lines)
+print("Total Words:", words)
+
+# Exercise 2
+with open("source.txt", "w") as f:
+    f.write("Important Data Row 1\nImportant Data Row 2\nImportant Data Row 3")
+
+with open("source.txt", "r") as src:
+    data = src.read()
+
+with open("backup.txt", "w") as dest:
+    dest.write(data)
+
+print("Backup created")
